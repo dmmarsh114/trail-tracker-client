@@ -7,11 +7,10 @@ import TrailTable from './TrailTable';
 const TrailIndex = (props) => {
 
     const [trails, setTrails] = useState([]);
-    const [trailCreate, setTrailCreate] = useState(false);
 
     const fetchTrails = () => {
 
-        fetch('http://localhost:3000/trails/all', {
+        fetch('http://localhost:3000/trails/mytrails', {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -30,15 +29,8 @@ const TrailIndex = (props) => {
         <Container>
             <div style={{ textAlign: "center", margin: 20 }}>
                 <h2>well howdy there, folks!</h2>
-                <Button onClick={() => setTrailCreate(!trailCreate)}>Click here to add a trail!</Button>
             </div>
-            <Row>
-                <Col md='1'></Col>
-                <Col md='10'>
-                    {trailCreate ? <TrailCreate /> : null}
-                </Col>
-                <Col md='1'></Col>
-            </Row>
+            <TrailCreate fetchTrails={fetchTrails} token={props.token} />
             <Row>
                 <Col md='1'></Col>
                 <Col md='10'>

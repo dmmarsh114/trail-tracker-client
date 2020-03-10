@@ -1,12 +1,12 @@
 import React from 'react';
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 
 const TrailTable = (props) => {
 
     const trailMapper = () => {
         return props.trails.map((trail, index) => {
             return (
-                <tr key={index}>
+                <tr key={index} onClick={e => editTrail(trail)}>
                     <td>{trail.name}</td>
                     <td>{trail.location.city}, {trail.location.state}</td>
                     <td>{trail.difficulty}</td>
@@ -15,6 +15,10 @@ const TrailTable = (props) => {
                 </tr>
             )
         })
+    }
+
+    const editTrail = (trail) => {
+        console.log(trail);
     }
 
     return (

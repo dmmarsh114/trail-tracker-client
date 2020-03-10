@@ -1,34 +1,63 @@
 import React, { useState } from 'react';
-import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
+import TrailInput from './TrailInput';
 
-const TrailCreate = () => {
+const TrailCreate = (props) => {
+
+    const [modal, setModal] = useState(false);
+
+    const [trailName, setTrailName] = useState('');
+    const [locationCity, setLocationCity] = useState('');
+    const [locationState, setLocationState] = useState('');
+    const [difficulty, setDifficulty] = useState('');
+    const [rating, setRating] = useState(1);
+    const [notes, setNotes] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        fetch('http://localhost:3000/trails/newlog', {
+            method: 'POST',
+            body: JSON.stringify({
+                name: trailName,
+                location: { city: locationCity, state: locationState },
+                difficulty: difficulty,
+                rating: rating,
+                notes: notes
+            }),
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': props.token
+            })
+        }).then(res => res.json())
+            .then(trailData => {
+                setTrailName('');
+                setLocationCity('');
+                setLocationState('');
+                setDifficulty('');
+                setRating(1);
+                setNotes('');
+                props.fetchTrails();
+            })
+    }
+
+    const toggleModal = () => setModal(!modal)
 
     return (
-        <div>
-            <h2>create trails here!</h2>
-            <Form>
-                <FormGroup>
-                    <Label>Trail Name: </Label>
-                    <Input />
-                </FormGroup>
-                <FormGroup>
-                    <Label>Trail Location: </Label>
-                    <Input />
-                </FormGroup>
-                <FormGroup>
-                    <Label>Difficulty: </Label>
-                    <Input />
-                </FormGroup>
-                <FormGroup>
-                    <Label>Rating: </Label>
-                    <Input />
-                </FormGroup>
-                <FormGroup>
-                    <Label>Notes: </Label>
-                    <Input />
-                </FormGroup>
-                <Button>Submit</Button>
-            </Form>
+        <div style={{ textAlign: "center", margin: 20 }}>
+            <Button onClick={() => toggleModal()}>click here to log a new trail!</Button>
+            {
+                modal ?
+                    <TrailInput
+                        modal={modal}
+                        handleSubmit={handleSubmit}
+                        setTrailName={setTrailName}
+                        setLocationCity={setLocationCity}
+                        setLocationState={setLocationState}
+                        setDifficulty={setDifficulty}
+                        setRating={setRating}
+                        setNotes={setNotes}
+                    /> : null
+            }
         </div>
     );
 }
