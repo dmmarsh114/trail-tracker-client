@@ -3,6 +3,7 @@ import './App.css';
 
 import Auth from './Components/Auth/Auth';
 import Sitebar from './Components/Home/Sitebar';
+import TrailIndex from './Components/Trails/TrailIndex';
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
   }
 
   const protectedView = () => {
-    return (sessionToken === localStorage.getItem('token') ? <h2>well howdy</h2>
+    return (sessionToken === localStorage.getItem('token') ? <TrailIndex token={sessionToken} />
       : <Auth updateToken={updateToken} />
     )
   }

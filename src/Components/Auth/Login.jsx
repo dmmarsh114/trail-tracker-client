@@ -18,7 +18,7 @@ const Login = (props) => {
                 .then(response => response.json())
                 .then(data => {
                     data.sessionToken ? props.updateToken(data.sessionToken)
-                        : alert('Username or password is incorrect')
+                        : alert(`${data.error}: Username or password is incorrect`)
                 })
 
         } else { alert('Please fill out all required fields') }

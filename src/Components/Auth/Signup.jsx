@@ -17,7 +17,7 @@ const Signup = (props) => {
             })
                 .then(response => response.json())
                 .then(data => data.sessionToken ? props.updateToken(data.sessionToken)
-                    : alert('Something went wrong (is the username already taken?)'))
+                    : alert(data.errors[0].message))
 
         } else { alert('Please fill out all required fields') }
 
