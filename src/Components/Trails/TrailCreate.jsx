@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button } from 'reactstrap';
 import TrailInput from './TrailInput';
 
 const TrailCreate = (props) => {
+
+    console.log(`CREATE PROPS: `, props)
 
     const [trailName, setTrailName] = useState('');
     const [locationCity, setLocationCity] = useState('');
@@ -10,8 +11,6 @@ const TrailCreate = (props) => {
     const [difficulty, setDifficulty] = useState('');
     const [rating, setRating] = useState(1);
     const [notes, setNotes] = useState('');
-
-    let modalHeader = 'Create new trail logs here!';
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,7 +27,8 @@ const TrailCreate = (props) => {
                 'Content-Type': 'application/json',
                 'Authorization': props.token
             })
-        }).then(res => res.json())
+        })
+            .then(res => res.json())
             .then(trailData => {
                 setTrailName('');
                 setLocationCity('');
@@ -38,24 +38,31 @@ const TrailCreate = (props) => {
                 setNotes('');
                 props.fetchTrails();
             })
+            .then(console.log('FETCH'))
     }
 
     return (
-        <div style={{ textAlign: "center", margin: 20 }}>
-            <Button onClick={props.toggleModal}>click here to log a new trail!</Button>
-            <TrailInput
-                modal={props.modal}
-                setModal={props.setModal}
-                toggleModal={props.toggleModal}
-                modalHeader={modalHeader}
-                handleSubmit={handleSubmit}
-                setTrailName={setTrailName}
-                setLocationCity={setLocationCity}
-                setLocationState={setLocationState}
-                setDifficulty={setDifficulty}
-                setRating={setRating}
-                setNotes={setNotes} />
-        </div>
+
+        <TrailInput
+            modal={props.createModal}
+            toggle={props.toggleCreateModal}
+            modalTitle={props.modalTitle}
+
+            handleSubmit={handleSubmit}
+
+            trailName={trailName}
+            setTrailName={setTrailName}
+            locationCity={locationCity}
+            setLocationCity={setLocationCity}
+            locationState={locationState}
+            setLocationState={setLocationState}
+            difficulty={difficulty}
+            setDifficulty={setDifficulty}
+            rating={rating}
+            setRating={setRating}
+            notes={notes}
+            setNotes={setNotes}
+        />
     );
 }
 
