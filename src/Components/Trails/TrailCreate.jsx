@@ -4,14 +4,14 @@ import TrailInput from './TrailInput';
 
 const TrailCreate = (props) => {
 
-    const [modal, setModal] = useState(false);
-
     const [trailName, setTrailName] = useState('');
     const [locationCity, setLocationCity] = useState('');
     const [locationState, setLocationState] = useState('');
     const [difficulty, setDifficulty] = useState('');
     const [rating, setRating] = useState(1);
     const [notes, setNotes] = useState('');
+
+    let modalHeader = 'Create new trail logs here!';
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -40,24 +40,21 @@ const TrailCreate = (props) => {
             })
     }
 
-    const toggleModal = () => setModal(!modal)
-
     return (
         <div style={{ textAlign: "center", margin: 20 }}>
-            <Button onClick={() => toggleModal()}>click here to log a new trail!</Button>
-            {
-                modal ?
-                    <TrailInput
-                        modal={modal}
-                        handleSubmit={handleSubmit}
-                        setTrailName={setTrailName}
-                        setLocationCity={setLocationCity}
-                        setLocationState={setLocationState}
-                        setDifficulty={setDifficulty}
-                        setRating={setRating}
-                        setNotes={setNotes}
-                    /> : null
-            }
+            <Button onClick={props.toggleModal}>click here to log a new trail!</Button>
+            <TrailInput
+                modal={props.modal}
+                setModal={props.setModal}
+                toggleModal={props.toggleModal}
+                modalHeader={modalHeader}
+                handleSubmit={handleSubmit}
+                setTrailName={setTrailName}
+                setLocationCity={setLocationCity}
+                setLocationState={setLocationState}
+                setDifficulty={setDifficulty}
+                setRating={setRating}
+                setNotes={setNotes} />
         </div>
     );
 }

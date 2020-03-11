@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table, Button } from 'reactstrap';
+import TrailEdit from './TrailEdit';
+
 
 const TrailTable = (props) => {
+
+    const [trail, setTrail] = useState();
 
     const trailMapper = () => {
         return props.trails.map((trail, index) => {
@@ -18,11 +22,14 @@ const TrailTable = (props) => {
     }
 
     const editTrail = (trail) => {
-        console.log(trail);
+        props.toggleModal();
+        setTrail(trail);
     }
 
     return (
         <div>
+
+            <TrailEdit trail={trail} modal={props.modal} toggleModal={props.toggleModal} fetchTrails={props.fetchTrails} token={props.token} />
             <Table hover striped bordered responsive>
                 <thead>
                     <tr>
