@@ -5,7 +5,7 @@ const TrailEdit = (props) => {
 
     return (
 
-        <TrailInput modal={props.editModal} toggle={props.toggleEditModal} modalTitle={props.modalTitle} />
+        <TrailInput modal={props.editModal} toggle={props.toggleEditModal} modalTitle={props.trailToEdit.name} />
     );
 }
 

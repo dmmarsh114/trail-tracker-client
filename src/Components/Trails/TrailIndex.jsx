@@ -49,7 +49,6 @@ const TrailIndex = (props) => {
                     <TrailCreate
                         createModal={createModal}
                         toggleCreateModal={toggleCreateModal}
-                        modalTitle={'create'}
                         fetchTrails={fetchTrails}
                         token={props.token} />
                 </Col>
@@ -62,7 +61,7 @@ const TrailIndex = (props) => {
                     <TrailEdit
                         editModal={editModal}
                         toggleEditModal={toggleEditModal}
-                        modalTitle={trailToEdit.name}
+                        trailToEdit={trailToEdit}
                         token={props.token} />
                 </Col>
                 <Col md='1'></Col>
@@ -70,7 +69,7 @@ const TrailIndex = (props) => {
             <Row>
                 <Col md='1'></Col>
                 <Col md='10'>
-                    <TrailTable trails={trails} setTrailToEdit={setTrailToEdit} />
+                    <TrailTable trails={trails} setTrailToEdit={setTrailToEdit} fetchTrails={fetchTrails} token={props.token} />
                 </Col>
                 <Col md='1'></Col>
             </Row>

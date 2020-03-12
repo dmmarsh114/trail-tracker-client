@@ -5,7 +5,7 @@ const TrailInput = (props) => {
 
     return (
         <Modal isOpen={props.modal}>
-            <ModalHeader toggle={props.toggle}>{props.modalTitle} trail input</ModalHeader>
+            <ModalHeader toggle={props.toggle}>{props.modalTitle} Trail Log</ModalHeader>
             <Form onSubmit={e => props.handleSubmit(e)}>
                 <ModalBody>
                     {/* TRAIL NAME */}

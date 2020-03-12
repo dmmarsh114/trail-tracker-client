@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 
 
 const TrailTable = (props) => {
@@ -13,6 +13,7 @@ const TrailTable = (props) => {
                     <td>{trail.difficulty}</td>
                     <td>{trail.rating}</td>
                     <td>{trail.notes}</td>
+                    <td><Button onClick={() => deleteTrail(trail)} color='danger'>delete</Button></td>
                 </tr>
             )
         })
@@ -20,6 +21,17 @@ const TrailTable = (props) => {
 
     const editTrail = (trail) => {
         props.setTrailToEdit(trail);
+    }
+
+    const deleteTrail = (trail) => {
+        fetch(`http://localhost:3000/trails/delete/${trail.id}`, {
+            method: 'DELETE',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': props.token
+            })
+        })
+            .then(() => props.fetchTrails())
     }
 
     return (

@@ -46,7 +46,7 @@ const TrailCreate = (props) => {
         <TrailInput
             modal={props.createModal}
             toggle={props.toggleCreateModal}
-            modalTitle={props.modalTitle}
+            modalTitle={'Create New'}
 
             handleSubmit={handleSubmit}
 
