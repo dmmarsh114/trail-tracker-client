@@ -62,6 +62,7 @@ const TrailIndex = (props) => {
                         editModal={editModal}
                         toggleEditModal={toggleEditModal}
                         trailToEdit={trailToEdit}
+                        setTrailToEdit={setTrailToEdit}
                         token={props.token} />
                 </Col>
                 <Col md='1'></Col>

@@ -3,7 +3,7 @@ import TrailInput from './TrailInput';
 
 const TrailCreate = (props) => {
 
-    console.log(`CREATE PROPS: `, props)
+    // console.log(`CREAsTE PROPS: `, props)
 
     const [trailName, setTrailName] = useState('');
     const [locationCity, setLocationCity] = useState('');
