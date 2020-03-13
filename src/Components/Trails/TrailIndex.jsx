@@ -3,21 +3,13 @@ import { Container, Row, Col, Button } from 'reactstrap';
 
 import TrailTable from './TrailTable';
 import TrailCreate from './TrailCreate';
-import TrailEdit from './TrailEdit';
 
 const TrailIndex = (props) => {
 
     const [trails, setTrails] = useState([]);
 
-    const [trailToEdit, setTrailToEdit] = useState({});
-    let editButtonDisabled = true;
-    trailToEdit.name === undefined ? editButtonDisabled = true : editButtonDisabled = false;
-
     const [createModal, setCreateModal] = useState(false);
-    const [editModal, setEditModal] = useState(false);
-
     const toggleCreateModal = () => setCreateModal(!createModal);
-    const toggleEditModal = () => setEditModal(!editModal);
 
     const fetchTrails = () => {
         fetch('http://localhost:3000/trails/mytrails', {
@@ -44,7 +36,7 @@ const TrailIndex = (props) => {
             </Row> <br />
             <Row>
                 <Col md='1'></Col>
-                <Col md='5'>
+                <Col md='10'>
                     <Button onClick={toggleCreateModal}>Create</Button>
                     <TrailCreate
                         createModal={createModal}
@@ -52,25 +44,13 @@ const TrailIndex = (props) => {
                         fetchTrails={fetchTrails}
                         token={props.token} />
                 </Col>
-                <Col md='5'>
-                    <Button
-                        disabled={editButtonDisabled}
-                        onClick={toggleEditModal}>
-                        {editButtonDisabled ? 'click a trail log to edit it!' : `edit ${trailToEdit.name}?`}
-                    </Button>
-                    <TrailEdit
-                        editModal={editModal}
-                        toggleEditModal={toggleEditModal}
-                        trailToEdit={trailToEdit}
-                        setTrailToEdit={setTrailToEdit}
-                        token={props.token} />
-                </Col>
                 <Col md='1'></Col>
+
             </Row> <br />
             <Row>
                 <Col md='1'></Col>
                 <Col md='10'>
-                    <TrailTable trails={trails} setTrailToEdit={setTrailToEdit} fetchTrails={fetchTrails} token={props.token} />
+                    <TrailTable trails={trails} fetchTrails={fetchTrails} token={props.token} />
                 </Col>
                 <Col md='1'></Col>
             </Row>

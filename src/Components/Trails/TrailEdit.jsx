@@ -1,29 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import TrailInput from './TrailInput';
 
 const TrailEdit = (props) => {
 
-    const [trailName, setTrailName] = useState('');
-    const [locationCity, setLocationCity] = useState('');
-    const [locationState, setLocationState] = useState('');
-    const [difficulty, setDifficulty] = useState('');
-    const [rating, setRating] = useState('');
-    const [notes, setNotes] = useState('');
+    // let city = () => props.trailToEdit.location === undefined ? '' : props.trailToEdit.location.city
+    // let state = () => props.trailToEdit.location === undefined ? '' : props.trailToEdit.location.state
 
-    // useEffect(() => {
+    const [NewTrailName, setNewTrailName] = useState(props.trailToEdit.name);
+    const [locationCity, setLocationCity] = useState(props.editCity);
+    const [locationState, setLocationState] = useState(props.editState);
+    const [difficulty, setDifficulty] = useState(props.trailToEdit.difficulty);
+    const [rating, setRating] = useState(props.trailToEdit.rating);
+    const [notes, setNotes] = useState(props.trailToEdit.notes);
 
-    // }, [])
-
-    console.log('CREATE PROPS:', props);
-    console.log(props.trailToEdit);
-    props.trailToEdit.location == undefined ? console.log('nothing here') : console.log(props.trailToEdit.location.city);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         fetch(`http://localhost:3000/trails/update/${props.trailToEdit.id}`, {
             method: 'PUT',
             body: JSON.stringify({
-                name: trailName,
+                name: NewTrailName,
                 location: { city: locationCity, state: locationState },
                 difficulty: difficulty,
                 rating: rating,
@@ -45,11 +41,11 @@ const TrailEdit = (props) => {
 
             handleSubmit={handleSubmit}
 
-            trailName={props.trailToEdit.name}
-            setTrailName={setTrailName}
-            locationCity={props.trailToEdit.location}
+            NewTrailName={props.trailToEdit.name}
+            setNewTrailName={setNewTrailName}
+            locationCity={props.editCity}
             setLocationCity={setLocationCity}
-            locationState={props.trailToEdit.location}
+            locationState={props.editState}
             setLocationState={setLocationState}
             difficulty={props.trailToEdit.difficulty}
             setDifficulty={setDifficulty}

@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table, Button } from 'reactstrap';
-
+import TrailEdit from './TrailEdit';
 
 const TrailTable = (props) => {
+
+    const [trailToEdit, setTrailToEdit] = useState({});
+    const [editModal, setEditModal] = useState(false);
+    const toggleEditModal = () => setEditModal(!editModal);
+
+    const [editCity, setEditCity] = useState('');
+    const [editState, setEditState] = useState('');
 
     const trailMapper = () => {
         return props.trails.map((trail, index) => {
@@ -20,7 +27,20 @@ const TrailTable = (props) => {
     }
 
     const editTrail = (trail) => {
-        props.setTrailToEdit(trail);
+        setTrailToEdit(trail);
+        setEditCity(trail.location.city);
+        setEditState(trail.location.state);
+        toggleEditModal();
+
+        // return (
+        //     <TrailEdit
+        //         trailToEdit={trailToEdit}
+        //         editModal={editModal}
+        //         toggleEditModal={toggleEditModal}
+        //         token={props.token}
+        //     />
+        // )
+
     }
 
     const deleteTrail = (trail) => {
@@ -50,6 +70,16 @@ const TrailTable = (props) => {
                     {trailMapper(props.trails)}
                 </tbody>
             </Table>
+            <TrailEdit
+                trailToEdit={trailToEdit}
+                editModal={editModal}
+                toggleEditModal={toggleEditModal}
+                fetchTrails={props.fetchTrails}
+                token={props.token}
+
+                editCity={editCity}
+                editState={editState}
+            />
         </div>
     )
 }

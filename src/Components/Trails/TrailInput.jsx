@@ -3,6 +3,7 @@ import { Form, FormGroup, Input, Label, Button, Modal, ModalHeader, ModalBody, M
 
 const TrailInput = (props) => {
 
+    console.log('INPUT STATE: ', props)
     return (
         <Modal isOpen={props.modal}>
             <ModalHeader toggle={props.toggle}>{props.modalTitle} Trail Log</ModalHeader>
@@ -13,8 +14,8 @@ const TrailInput = (props) => {
                         <Label htmlFor='trailName'>Trail Name: </Label>
                         <Input
                             id='trailName'
-                            value={props.trailName}
-                            onChange={e => props.setTrailName(e.target.value)}
+                            value={props.NewtrailName}
+                            onChange={e => props.setNewTrailName(e.target.value)}
                         />
                     </FormGroup>
                     {/* TRAIL LOCATION */}
