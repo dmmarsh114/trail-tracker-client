@@ -3,15 +3,13 @@ import TrailInput from './TrailInput';
 
 const TrailEdit = (props) => {
 
-    // let city = () => props.trailToEdit.location === undefined ? '' : props.trailToEdit.location.city
-    // let state = () => props.trailToEdit.location === undefined ? '' : props.trailToEdit.location.state
 
-    const [NewTrailName, setNewTrailName] = useState(props.trailToEdit.name);
-    const [locationCity, setLocationCity] = useState(props.editCity);
-    const [locationState, setLocationState] = useState(props.editState);
-    const [difficulty, setDifficulty] = useState(props.trailToEdit.difficulty);
-    const [rating, setRating] = useState(props.trailToEdit.rating);
-    const [notes, setNotes] = useState(props.trailToEdit.notes);
+    const [newTrailName, setNewTrailName] = useState(props.trailToEdit.name);
+    const [newLocationCity, setNewLocationCity] = useState(props.editCity);
+    const [newLocationState, setNewLocationState] = useState(props.editState);
+    const [newDifficulty, setNewDifficulty] = useState(props.trailToEdit.difficulty);
+    const [newRating, setNewRating] = useState(props.trailToEdit.rating);
+    const [newNotes, setNewNotes] = useState(props.trailToEdit.notes);
 
 
     const handleSubmit = (e) => {
@@ -19,11 +17,11 @@ const TrailEdit = (props) => {
         fetch(`http://localhost:3000/trails/update/${props.trailToEdit.id}`, {
             method: 'PUT',
             body: JSON.stringify({
-                name: NewTrailName,
-                location: { city: locationCity, state: locationState },
-                difficulty: difficulty,
-                rating: rating,
-                notes: notes
+                name: newTrailName,
+                location: { city: newLocationCity, state: newLocationState },
+                difficulty: newDifficulty,
+                rating: newRating,
+                notes: newNotes
             }),
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -41,18 +39,18 @@ const TrailEdit = (props) => {
 
             handleSubmit={handleSubmit}
 
-            NewTrailName={props.trailToEdit.name}
+            newTrailName={props.trailToEdit.name}
             setNewTrailName={setNewTrailName}
-            locationCity={props.editCity}
-            setLocationCity={setLocationCity}
-            locationState={props.editState}
-            setLocationState={setLocationState}
+            newLocationCity={props.editCity}
+            setNewLocationCity={setNewLocationCity}
+            newLocationState={props.editState}
+            setNewLocationState={setNewLocationState}
             difficulty={props.trailToEdit.difficulty}
-            setDifficulty={setDifficulty}
+            setDifficulty={setNewDifficulty}
             rating={props.trailToEdit.rating}
-            setRating={setRating}
+            setRating={setNewRating}
             notes={props.trailToEdit.notes}
-            setNotes={setNotes}
+            setNotes={setNewNotes}
         />
     );
 }
