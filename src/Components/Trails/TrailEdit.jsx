@@ -33,8 +33,8 @@ const TrailEdit = (props) => {
             }).then(res => {
                 setWarning(false);
                 props.fetchTrails();
+                props.toggleEditModal();
             })
-                .then(props.toggleEditModal())
         }
         else {
             setWarning(true);
