@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Table, Button, Input } from 'reactstrap';
+import APIURL from '../../helpers/environment';
 
 const TrailTable = (props) => {
 
@@ -22,7 +23,7 @@ const TrailTable = (props) => {
     }
 
     const deleteTrail = (trail) => {
-        fetch(`http://localhost:3000/trails/delete/${trail.id}`, {
+        fetch(`${APIURL}/trails/delete/${trail.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

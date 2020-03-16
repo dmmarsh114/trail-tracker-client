@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, FormGroup, Input, Label, Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col } from 'reactstrap';
+import APIURL from '../../helpers/environment';
 
 const TrailCreate = (props) => {
 
@@ -17,7 +18,7 @@ const TrailCreate = (props) => {
 
         if (trailName !== '' && locationCity !== '' && locationState !== '' && locationState !== 'State') {
 
-            fetch('http://localhost:3000/trails/newlog', {
+            fetch(`${APIURL}/trails/newlog`, {
                 method: 'POST',
                 body: JSON.stringify({
                     name: trailName,

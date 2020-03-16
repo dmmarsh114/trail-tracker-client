@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, FormGroup, Input, Label, Button, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col } from 'reactstrap';
+import APIURL from '../../helpers/environment';
 
 const TrailEdit = (props) => {
 
@@ -17,7 +18,7 @@ const TrailEdit = (props) => {
 
         if (newTrailName !== '' && newLocationCity !== '' && newLocationState !== '' && newLocationState !== 'State') {
 
-            fetch(`http://localhost:3000/trails/update/${props.trailToEdit.id}`, {
+            fetch(`${APIURL}/trails/update/${props.trailToEdit.id}`, {
                 method: 'PUT',
                 body: JSON.stringify({
                     name: newTrailName,

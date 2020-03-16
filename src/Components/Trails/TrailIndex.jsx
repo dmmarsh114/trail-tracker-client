@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
+import APIURL from '../../helpers/environment';
 
 import TrailTable from './TrailTable';
 import TrailCreate from './TrailCreate';
@@ -17,7 +18,7 @@ const TrailIndex = (props) => {
     const toggleEditModal = () => setEditModalActive(!editModalActive);
 
     const fetchTrails = () => {
-        fetch('http://localhost:3000/trails/mytrails', {
+        fetch(`${APIURL}/trails/mytrails`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
