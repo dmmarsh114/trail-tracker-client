@@ -10,12 +10,12 @@ const Sidebar = (props) => {
     }
     return (
         <Navbar color='faded' light expand='md'>
-            <NavbarBrand href='/'>TrailTracker</NavbarBrand>
+            <NavbarBrand href='/'>TrailTracker -- Track your Trails here!</NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
                 <Nav className='ml-auto' navbar>
                     <NavItem>
-                        <Button onClick={props.clickLogout}>Logout</Button>
+                        {props.token ? <Button onClick={props.clickLogout}>Logout</Button> : null}
                     </NavItem>
                 </Nav>
             </Collapse>

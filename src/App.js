@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="App">
-      <Sitebar clickLogout={clearToken} />
+      <Sitebar clickLogout={clearToken} token={sessionToken} />
       {protectedView()}
     </div>
   );
