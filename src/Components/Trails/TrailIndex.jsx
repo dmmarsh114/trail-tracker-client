@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 
 import TrailTable from './TrailTable';
 import TrailCreate from './TrailCreate';
+import TrailEdit from './TrailEdit';
 
 const TrailIndex = (props) => {
 
@@ -10,6 +11,10 @@ const TrailIndex = (props) => {
 
     const [createModal, setCreateModal] = useState(false);
     const toggleCreateModal = () => setCreateModal(!createModal);
+
+    const [trailToEdit, setTrailToEdit] = useState({});
+    const [editModalActive, setEditModalActive] = useState(false);
+    const toggleEditModal = () => setEditModalActive(!editModalActive);
 
     const fetchTrails = () => {
         fetch('http://localhost:3000/trails/mytrails', {
@@ -50,11 +55,23 @@ const TrailIndex = (props) => {
             <Row>
                 <Col md='1'></Col>
                 <Col md='10'>
-                    <TrailTable trails={trails} fetchTrails={fetchTrails} token={props.token} />
+                    <TrailTable
+                        trails={trails}
+                        fetchTrails={fetchTrails}
+                        setTrailToEdit={setTrailToEdit}
+                        toggleEditModal={toggleEditModal}
+                        token={props.token}
+                    />
                 </Col>
                 <Col md='1'></Col>
             </Row>
-
+            {editModalActive ?
+                <TrailEdit
+                    trailToEdit={trailToEdit}
+                    toggleEditModal={toggleEditModal}
+                    fetchTrails={fetchTrails}
+                    token={props.token}
+                /> : null}
         </Container >
     )
 }
