@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar, NavbarBrand, Collapse, NavbarToggler, Nav, NavItem, Button } from 'reactstrap';
 
-const Sidebar = (props) => {
+const Sitebar = (props) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -23,4 +23,4 @@ const Sidebar = (props) => {
     )
 }
 
-export default Sidebar;
+export default Sitebar;
