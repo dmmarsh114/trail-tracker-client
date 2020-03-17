@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 
-import Auth from './Components/Auth/Auth';
-import Sitebar from './Components/Home/Sitebar';
-import TrailIndex from './Components/Trails/TrailIndex';
+import Sitebar from './Components/Home/Sitebar/Sitebar';
+
 
 function App() {
 
@@ -20,12 +20,6 @@ function App() {
     setSessionToken(newToken);
   }
 
-  const protectedView = () => {
-    return (sessionToken === localStorage.getItem('token') ? <TrailIndex token={sessionToken} />
-      : <Auth updateToken={updateToken} />
-    )
-  }
-
   const clearToken = () => {
     localStorage.clear();
     setSessionToken('');
@@ -33,8 +27,10 @@ function App() {
 
   return (
     <div className="App">
-      <Sitebar clickLogout={clearToken} token={sessionToken} />
-      {protectedView()}
+      <Router>
+        <Sitebar updateToken={updateToken} clickLogout={clearToken} token={sessionToken} />
+      </Router>
+      {/* <Landing updateToken={updateToken} token={sessionToken} /> */}
     </div>
   );
 }

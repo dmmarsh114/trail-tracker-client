@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Table, Button, Input } from 'reactstrap';
+import React from 'react';
+import { Table, Button } from 'reactstrap';
 import APIURL from '../../helpers/environment';
 
 const TrailTable = (props) => {

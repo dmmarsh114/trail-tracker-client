@@ -37,7 +37,12 @@ const TrailIndex = (props) => {
         <Container style={{ textAlign: 'center' }}>
             <Row>
                 <Col md='1'></Col>
-                <Col md='10'><h2>well howdy there, folks!</h2></Col>
+                <Col md='10'><h2>well howdy there!</h2></Col>
+                <Col md='1'></Col>
+            </Row>
+            <Row>
+                <Col md='1'></Col>
+                <Col md='10'><h5>these are your trails!</h5></Col>
                 <Col md='1'></Col>
             </Row> <br />
             <Row>

@@ -1,0 +1,10 @@
+.hero {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.image {
+    width: 90vw;
+    height: 90vh;
+}
