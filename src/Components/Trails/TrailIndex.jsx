@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import APIURL from '../../helpers/environment';
 
+import Auth from '../Auth/Auth';
 import TrailTable from './TrailTable';
 import TrailCreate from './TrailCreate';
 import TrailEdit from './TrailEdit';
+
+import AllTrails from './AllTrails';
+
 
 const TrailIndex = (props) => {
 
@@ -34,51 +38,55 @@ const TrailIndex = (props) => {
     }, [])
 
     return (
-        <Container style={{ textAlign: 'center' }}>
-            <Row>
-                <Col md='1'></Col>
-                <Col md='10'><h2>well howdy there!</h2></Col>
-                <Col md='1'></Col>
-            </Row>
-            <Row>
-                <Col md='1'></Col>
-                <Col md='10'><h5>these are your trails!</h5></Col>
-                <Col md='1'></Col>
-            </Row> <br />
-            <Row>
-                <Col md='1'></Col>
-                <Col md='10'>
-                    <Button onClick={toggleCreateModal}>Create</Button>
-                    <TrailCreate
-                        createModal={createModal}
-                        toggleCreateModal={toggleCreateModal}
-                        fetchTrails={fetchTrails}
-                        token={props.token} />
-                </Col>
-                <Col md='1'></Col>
+        props.token === localStorage.getItem('token') ? (
+            <Container style={{ textAlign: 'center' }}>
+                <Row>
+                    <Col md='1'></Col>
+                    <Col md='10'><h2>well howdy there!</h2></Col>
+                    <Col md='1'></Col>
+                </Row>
+                <Row>
+                    <Col md='1'></Col>
+                    <Col md='10'><h5>these are your trails!</h5></Col>
+                    <Col md='1'></Col>
+                </Row> <br />
+                <Row>
+                    <Col md='1'></Col>
+                    <Col md='10'>
+                        <Button onClick={toggleCreateModal}>Create</Button>
+                        <TrailCreate
+                            createModal={createModal}
+                            toggleCreateModal={toggleCreateModal}
+                            fetchTrails={fetchTrails}
+                            token={props.token} />
+                    </Col>
+                    <Col md='1'></Col>
 
-            </Row> <br />
-            <Row>
-                <Col md='1'></Col>
-                <Col md='10'>
-                    <TrailTable
-                        trails={trails}
-                        fetchTrails={fetchTrails}
-                        setTrailToEdit={setTrailToEdit}
+                </Row> <br />
+                <Row>
+                    <Col md='1'></Col>
+                    <Col md='10'>
+                        <TrailTable
+                            trails={trails}
+                            fetchTrails={fetchTrails}
+                            setTrailToEdit={setTrailToEdit}
+                            toggleEditModal={toggleEditModal}
+                            token={props.token}
+                        />
+                    </Col>
+                    <Col md='1'></Col>
+                </Row>
+                {editModalActive ?
+                    <TrailEdit
+                        trailToEdit={trailToEdit}
                         toggleEditModal={toggleEditModal}
+                        fetchTrails={fetchTrails}
                         token={props.token}
-                    />
-                </Col>
-                <Col md='1'></Col>
-            </Row>
-            {editModalActive ?
-                <TrailEdit
-                    trailToEdit={trailToEdit}
-                    toggleEditModal={toggleEditModal}
-                    fetchTrails={fetchTrails}
-                    token={props.token}
-                /> : null}
-        </Container >
+                    /> : null}
+                <AllTrails token={props.token} />
+            </Container>
+        ) : <Auth updateToken={props.updateToken} token={props.token} />
+
     )
 }
 

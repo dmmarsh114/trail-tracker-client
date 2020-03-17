@@ -30,7 +30,6 @@ function App() {
       <Router>
         <Sitebar updateToken={updateToken} clickLogout={clearToken} token={sessionToken} />
       </Router>
-      {/* <Landing updateToken={updateToken} token={sessionToken} /> */}
     </div>
   );
 }
