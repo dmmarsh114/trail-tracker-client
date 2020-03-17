@@ -10,7 +10,7 @@ const Sitebar = (props) => {
     }
     return (
         <Navbar color='faded' light expand='md'>
-            <NavbarBrand href='/'>TrailTracker -- Track your Trails here!</NavbarBrand>
+            <NavbarBrand href='/'>TrailTracker</NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
                 <Nav className='ml-auto' navbar>
