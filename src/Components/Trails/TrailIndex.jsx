@@ -7,8 +7,6 @@ import TrailTable from './TrailTable';
 import TrailCreate from './TrailCreate';
 import TrailEdit from './TrailEdit';
 
-import AllTrails from './AllTrails';
-
 
 const TrailIndex = (props) => {
 
@@ -83,7 +81,6 @@ const TrailIndex = (props) => {
                         fetchTrails={fetchTrails}
                         token={props.token}
                     /> : null}
-                <AllTrails token={props.token} />
             </Container>
         ) : <Auth updateToken={props.updateToken} token={props.token} />
 

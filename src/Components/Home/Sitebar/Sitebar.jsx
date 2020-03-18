@@ -26,6 +26,7 @@ const Sitebar = (props) => {
                         <NavItem>
                             <Button><Link to='/' className='link'>Home</Link></Button>
                         </NavItem>
+                        {/* ALL TRAILS */}
                         <NavItem>
                             {props.token === localStorage.getItem('token') ?
                                 <Button><Link to='/alltrails' className='link'>All Trails</Link></Button>

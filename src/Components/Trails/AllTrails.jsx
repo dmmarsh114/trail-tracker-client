@@ -11,7 +11,6 @@ const AllTrails = (props) => {
     const [cSelected, setCSelected] = useState([]);
     const [stateFilter, setStateFilter] = useState('');
     const [difficultyFilter, setDifficultyFilter] = useState('easy');
-    const [ratingFilter, setRatingFilter] = useState(1);
 
 
     const fetchAllTrails = () => {
@@ -74,11 +73,6 @@ const AllTrails = (props) => {
 
     const filterTrailsByDifficulty = (difficulty) => {
         let filteredTrails = displayedTrails.filter(trail => trail.difficulty === difficulty);
-        setDisplayedTrails(filteredTrails);
-    }
-
-    const filterTrailsByRating = (rating) => {
-        let filteredTrails = displayedTrails.filter(trail => trail.rating >= rating);
         setDisplayedTrails(filteredTrails);
     }
 
@@ -154,20 +148,6 @@ const AllTrails = (props) => {
                     <option value="very strenuous">very strenuous</option>
                 </Input>
                 <Button color="primary" onClick={() => { onCheckboxBtnClick(2); filterTrailsByDifficulty(difficultyFilter) }} active={cSelected.includes(2)}>Difficulty</Button>
-
-                <Input type='select' value={ratingFilter} onChange={e => setRatingFilter(e.target.value)}>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </Input>
-                <Button color="primary" onClick={() => { onCheckboxBtnClick(3); filterTrailsByRating(ratingFilter) }} active={cSelected.includes(3)}>Rating</Button>
             </ButtonGroup>
             <Button onClick={() => clearFilter()}>clear filters</Button>
 
