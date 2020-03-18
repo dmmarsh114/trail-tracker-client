@@ -27,7 +27,9 @@ const Sitebar = (props) => {
                             <Button><Link to='/' className='link'>Home</Link></Button>
                         </NavItem>
                         <NavItem>
-                            <Button><Link to='/alltrails'>All Trails</Link></Button>
+                            {props.token === localStorage.getItem('token') ?
+                                <Button><Link to='/alltrails' className='link'>All Trails</Link></Button>
+                                : null}
                         </NavItem>
                         {/* TRAIL INDEX */}
                         <NavItem>
