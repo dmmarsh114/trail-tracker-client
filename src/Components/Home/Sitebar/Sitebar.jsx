@@ -18,7 +18,7 @@ const Sitebar = (props) => {
     return (
         <div>
             <Navbar color='faded' light expand='md'>
-                <NavbarBrand href='/'>TrailTracker</NavbarBrand>
+                <NavbarBrand id='brand' href='/'>TrailTracker</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className='ml-auto' navbar>

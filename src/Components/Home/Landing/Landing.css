@@ -1,16 +1,29 @@
 .hero {
-    background-image: url(../../../assets/whiteRiver.jpg);
+    background-image: url(../../../assets/paul-gilmore-4i97n6L0XuY-unsplash.jpg);
     background-size: 100%;
 
     height: 90vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     height: 99 vh;
 }
 
-.image {
-    z-index: -1;
-    width: 90vw;
-    height: 90vh;
+#cards{
+    margin-top: 30px;
+    opacity: 80%;
+}
+
+#cards:hover{
+    color: red;
+}
+
+#title {
+    color: white;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+#title h5 {
+    margin-left: 70px;
 }

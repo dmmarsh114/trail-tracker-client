@@ -1,0 +1,14 @@
+.auth {
+    background-image: url(../../assets/michael-benz--IZ2sgQKIhM-unsplash.jpg);
+    background-size: 100%;
+
+    margin: 0;
+    padding: 20px;
+    width: 98vw;
+    height: 90vh;
+
+}
+
+#toggleButton {
+    margin-top: 20px;
+}

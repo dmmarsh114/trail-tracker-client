@@ -95,10 +95,10 @@ const AllTrails = (props) => {
 
             <Form className='searchForm' onSubmit={e => filteredSearch(e)}>
                 <h4>trails posted by your fellow trackers!</h4>
-                <h6>filter trails by...</h6>
+                <h5>filter trails by...</h5>
 
                 <FormGroup>
-                    <Checkbox color='default' id='stateCheckbox' value={stateFiltering} checked={stateFiltering} onChange={() => setStateFiltering(!stateFiltering)}></Checkbox>
+                    <Checkbox color='primary' id='stateCheckbox' value={stateFiltering} checked={stateFiltering} onChange={() => setStateFiltering(!stateFiltering)}></Checkbox>
                     {
                         !stateFiltering ? <Label for='stateCheckbox'>State</Label>
                             : <Input id='filterInput' type='select' value={stateFilter} onChange={e => setStateFilter(e.target.value)}>
@@ -157,7 +157,7 @@ const AllTrails = (props) => {
                 </FormGroup>
 
                 <FormGroup>
-                    <Checkbox color='default' id='difficultyCheckbox' value={difficultyFiltering} checked={difficultyFiltering} onChange={() => setDifficultyFiltering(!difficultyFiltering)}></Checkbox>
+                    <Checkbox color='primary' id='difficultyCheckbox' value={difficultyFiltering} checked={difficultyFiltering} onChange={() => setDifficultyFiltering(!difficultyFiltering)}></Checkbox>
                     {
                         !difficultyFiltering ? <Label for='difficultyCheckbox'>Difficulty</Label>
                             : <Input id='filterInput' type='select' type='select' value={difficultyFilter} onChange={e => setDifficultyFilter(e.target.value)}>
