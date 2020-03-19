@@ -188,6 +188,7 @@ const TrailEdit = (props) => {
                         <Input
                             id='notes'
                             type='textarea'
+                            wrap='hard'
                             value={newNotes}
                             onChange={e => setNewNotes(e.target.value)}
                         />

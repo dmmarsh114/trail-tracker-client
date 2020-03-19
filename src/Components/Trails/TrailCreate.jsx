@@ -194,6 +194,7 @@ const TrailCreate = (props) => {
                         <Input
                             id='notes'
                             type='textarea'
+                            wrap='hard'
                             value={notes}
                             onChange={e => setNotes(e.target.value)}
                         />

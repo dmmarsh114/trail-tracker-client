@@ -51,7 +51,7 @@ const TrailIndex = (props) => {
                 <Row>
                     <Col md='1'></Col>
                     <Col md='10'>
-                        <Button onClick={toggleCreateModal}>Create</Button>
+                        <Button onClick={toggleCreateModal}>click here to log a new trail!</Button>
                         <TrailCreate
                             createModal={createModal}
                             toggleCreateModal={toggleCreateModal}

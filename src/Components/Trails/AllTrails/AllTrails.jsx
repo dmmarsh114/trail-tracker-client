@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Button, Table, Form, FormGroup, Label } from 'reactstrap';
-import APIURL from '../../helpers/environment';
+
+import './AllTrails.css';
+import Checkbox from '@material-ui/core/Checkbox';
+
+import APIURL from '../../../helpers/environment';
 
 
 const AllTrails = (props) => {
@@ -58,11 +62,9 @@ const AllTrails = (props) => {
     }
 
     const clearFilters = () => {
-        document.getElementById('stateCheckbox').checked = false;
         setStateFiltering(false);
         setStateFilter('Alabama');
 
-        document.getElementById('difficultyCheckbox').checked = false;
         setDifficultyFiltering(false);
         setDifficultyFilter('easy');
 
@@ -90,15 +92,16 @@ const AllTrails = (props) => {
 
     return (
         <div>
-            <h5>what kind of trails are you looking for, partner?</h5>
 
-            <Form onSubmit={e => filteredSearch(e)}>
+            <Form className='searchForm' onSubmit={e => filteredSearch(e)}>
+                <h4>trails posted by your fellow trackers!</h4>
+                <h6>filter trails by...</h6>
+
                 <FormGroup>
-                    <input type='checkbox' id='stateCheckbox' value={stateFiltering} onChange={() => setStateFiltering(!stateFiltering)}></input>
-                    <Label for='stateCheckbox'>State</Label>
+                    <Checkbox color='default' id='stateCheckbox' value={stateFiltering} checked={stateFiltering} onChange={() => setStateFiltering(!stateFiltering)}></Checkbox>
                     {
-                        !stateFiltering ? null
-                            : <Input type='select' value={stateFilter} onChange={e => setStateFilter(e.target.value)}>
+                        !stateFiltering ? <Label for='stateCheckbox'>State</Label>
+                            : <Input id='filterInput' type='select' value={stateFilter} onChange={e => setStateFilter(e.target.value)}>
                                 <option value="Alabama">Alabama</option>
                                 <option value="Alaska">Alaska</option>
                                 <option value="Arizona">Arizona</option>
@@ -152,12 +155,12 @@ const AllTrails = (props) => {
                             </Input>
                     }
                 </FormGroup>
+
                 <FormGroup>
-                    <input type='checkbox' id='difficultyCheckbox' value={difficultyFiltering} onChange={() => setDifficultyFiltering(!difficultyFiltering)}></input>
-                    <Label for='difficultyCheckbox'>Difficulty</Label>
+                    <Checkbox color='default' id='difficultyCheckbox' value={difficultyFiltering} checked={difficultyFiltering} onChange={() => setDifficultyFiltering(!difficultyFiltering)}></Checkbox>
                     {
-                        !difficultyFiltering ? null
-                            : <Input type='select' value={difficultyFilter} onChange={e => setDifficultyFilter(e.target.value)}>
+                        !difficultyFiltering ? <Label for='difficultyCheckbox'>Difficulty</Label>
+                            : <Input id='filterInput' type='select' type='select' value={difficultyFilter} onChange={e => setDifficultyFilter(e.target.value)}>
                                 <option value="easy">easy</option>
                                 <option value="moderate">moderate</option>
                                 <option value="moderately strenuous">moderately strenuous</option>
@@ -166,11 +169,12 @@ const AllTrails = (props) => {
                             </Input>
                     }
                 </FormGroup>
-                <Button type='submit'>Submit</Button>
-                <Button onClick={clearFilters}>Clear filters</Button>
+
+                <Button id='searchButton' type='submit'>search with these filters</Button>
+                <Button id='searchButton' onClick={clearFilters}>clear filters</Button>
             </Form>
 
-            <Table>
+            <Table id='allTrailsTable' hover striped bordered responsive>
                 <thead>
                     <tr>
                         <th>Name</th>

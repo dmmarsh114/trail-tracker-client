@@ -1,0 +1,19 @@
+.searchForm {
+    background-color: lightgray;
+    padding: 10px;
+}
+
+.searchForm h4 {
+    text-align: center;
+}
+
+#filterInput {
+    width: 20%;
+    display: flex;
+}
+
+#searchButton {
+    width: 200;
+    margin: 20;
+    margin-top: 0;
+}

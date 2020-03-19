@@ -6,7 +6,7 @@ import './Sitebar.css';
 import Landing from '../Landing/Landing';
 import Auth from '../../Auth/Auth';
 import TrailIndex from '../../Trails/TrailIndex';
-import AllTrails from '../../Trails/AllTrails';
+import AllTrails from '../../Trails/AllTrails/AllTrails';
 
 const Sitebar = (props) => {
 
@@ -22,13 +22,9 @@ const Sitebar = (props) => {
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className='ml-auto' navbar>
-                        {/* LANDING PAGE */}
-                        <NavItem>
-                            <Button><Link to='/' className='link'>Home</Link></Button>
-                        </NavItem>
                         {/* ALL TRAILS */}
                         <NavItem>
-                            <Button><Link to='/alltrails' className='link'>All Trails</Link></Button>
+                            <Button><Link to='/alltrails' className='link'>Community Trails</Link></Button>
                         </NavItem>
                         {/* TRAIL INDEX */}
                         <NavItem>

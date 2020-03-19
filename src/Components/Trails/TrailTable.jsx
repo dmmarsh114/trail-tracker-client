@@ -1,6 +1,9 @@
 import React from 'react';
-import { Table, Button } from 'reactstrap';
+import { Table } from 'reactstrap';
 import APIURL from '../../helpers/environment';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import { FormHelperText } from '@material-ui/core';
 
 const TrailTable = (props) => {
 
@@ -12,10 +15,10 @@ const TrailTable = (props) => {
                     <td>{trail.location.city}, {trail.location.state}</td>
                     <td>{trail.difficulty}</td>
                     <td>{trail.rating}</td>
-                    <td>{trail.notes}</td>
-                    <td>
-                        <Button onClick={() => { props.setTrailToEdit(trail); props.toggleEditModal() }} color='warning'>edit</Button>
-                        <Button onClick={() => deleteTrail(trail)} color='danger'>delete</Button>
+                    <td style={{ overflowY: 'scroll', maxWidth: 250, overflowWrap: 'normal' }}>{trail.notes}</td>
+                    <td style={{ flexDirection: 'row' }}>
+                        <EditIcon onClick={() => { props.setTrailToEdit(trail); props.toggleEditModal() }}>edit</EditIcon>
+                        <DeleteIcon onClick={() => deleteTrail(trail)}>delete</DeleteIcon>
                     </td>
                 </tr >
             )
