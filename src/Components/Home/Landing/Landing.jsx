@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Landing.css';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,12 +11,13 @@ import NaturePeopleIcon from '@material-ui/icons/NaturePeople';
 
 import styled from 'styled-components';
 
-
 const useStyles = makeStyles({
     root: {
         maxWidth: 200,
         height: 220,
+        marginTop: 30,
         textAlign: 'center',
+        opacity: .8
     },
     header: {
         marginTop: 20,
@@ -51,32 +53,36 @@ const Landing = (props) => {
                 <h2 className='landingTitle'>Welcome to Trail Tracker!</h2>
                 {props.token === localStorage.getItem('token') ? <h5>you're logged in!</h5> : null}
             </div>
-            <Row id='cards'>
+            <Row>
                 <Wrapper>
-                    <Card className={classes.root}>
-                        <CardActionArea>
-                            <CardContent className={classes.header}>
-                                <PeopleAltIcon></PeopleAltIcon>
-                                <h5>Community</h5>
-                            </CardContent>
-                            <CardContent>
-                                <h6>See what trails your fellow hikers are tracking!</h6>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
+                    <Link id='card' to='/alltrails'>
+                        <Card className={classes.root} >
+                            <CardActionArea>
+                                <CardContent className={classes.header}>
+                                    <PeopleAltIcon></PeopleAltIcon>
+                                    <h5>Community</h5>
+                                </CardContent>
+                                <CardContent>
+                                    <h6>See what trails your fellow hikers are tracking!</h6>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Link>
                 </Wrapper>
                 <Wrapper>
-                    <Card className={classes.root}>
-                        <CardActionArea>
-                            <CardContent className={classes.header}>
-                                <NaturePeopleIcon></NaturePeopleIcon>
-                                <h5>My Trails</h5>
-                            </CardContent>
-                            <CardContent>
-                                <h6>Post your own favorite trails!</h6>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
+                    <Link id='card' to={props.token ? '/mytrails' : '/auth'}>
+                        <Card className={classes.root}>
+                            <CardActionArea>
+                                <CardContent className={classes.header}>
+                                    <NaturePeopleIcon></NaturePeopleIcon>
+                                    <h5>My Trails</h5>
+                                </CardContent>
+                                <CardContent>
+                                    <h6>Post your own favorite trails!</h6>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    </Link>
                 </Wrapper>
             </Row>
         </div>

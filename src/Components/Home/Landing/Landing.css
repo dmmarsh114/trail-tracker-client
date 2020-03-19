@@ -9,13 +9,8 @@
     height: 99 vh;
 }
 
-#cards{
-    margin-top: 30px;
-    opacity: 80%;
-}
-
-#cards:hover{
-    color: red;
+#card:hover{
+    text-decoration: none;
 }
 
 #title {
