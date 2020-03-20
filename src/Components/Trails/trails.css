@@ -7,7 +7,7 @@
     overflow-wrap: break-word;
     overflow-y: auto;
     justify-content: center;
-    opacity: 90%;
+    /* opacity: 90%; */
 }
 
 #tdNotes {
